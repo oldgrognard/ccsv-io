@@ -4,11 +4,11 @@ import { Providers } from '../components/Providers';
 const Root = () => {
     return (
         <div className='root'>
-            <Provideers>
-                <Outlet/>
-            </Provideers>
+            <Providers>
+                <Outlet />
+            </Providers>
         </div>
-    )
-}
+    );
+};
 
 export { Root };

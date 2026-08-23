@@ -1,13 +1,15 @@
+import { Route, Routes } from 'react-router';
+import { Root } from './Root.jsx';
+import { Landing } from './Landing';
+
 const Router = () => {
     return (
-        <Providers>
-            <Routes>
-                <Route element={<Root />}>
-                    <Route path='/' element={<Landing />} />
-                </Route>
-            </Routes>
-        </Providers>
-    )
-}
+        <Routes>
+            <Route element={<Root />}>
+                <Route path='/' element={<Landing />} />
+            </Route>
+        </Routes>
+    );
+};
 
 export { Router };
