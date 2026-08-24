@@ -7,6 +7,7 @@ import { Hero } from '../components/Hero.jsx';
 import { Mechanism } from '../components/Mechanism.jsx';
 import { Comparison } from '../components/Comparison.jsx';
 import { Spec } from '../components/Spec.jsx';
+import { Footer } from '../components/Footer.jsx';
 
 const Landing = () => {
     const dark = useMediaQuery('(prefers-color-scheme: dark)');
@@ -93,6 +94,9 @@ const Landing = () => {
 
             {/* CTA / SPEC */}
             <Spec />
+
+            {/* Footer */}
+            <Footer />
         </Box>
     );
 };
