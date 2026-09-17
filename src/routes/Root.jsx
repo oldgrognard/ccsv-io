@@ -1,13 +1,21 @@
+import { Box } from '@mui/material';
 import { Outlet } from 'react-router';
-import { Providers } from '../components/Providers';
+import { Footer } from '../components/Footer.jsx';
+import { Header } from '../components/Header';
 
 const Root = () => {
     return (
-        <div className='root'>
-            <Providers>
+        <Box sx={{ bgcolor: 'background.default', minHeight: '100vh' }}>
+            <Header />
+            <Box
+                sx={{
+                    pb: 7,
+                }}
+            >
                 <Outlet />
-            </Providers>
-        </div>
+            </Box>
+            <Footer />
+        </Box>
     );
 };
 

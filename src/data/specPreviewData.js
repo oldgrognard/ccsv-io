@@ -1,20 +1,15 @@
 const specPreviewData = [
+    ['1.', 'A CCSV file must be UTF-8 encoded.'],
     [
-        '1.',
-        'A .ccsv file is a sequence of records, each terminated by RS (0x1E).',
+        '2.',
+        'Every CCSV file must begin with a header row listing the column names. Colunns are separated by a Unit Separator (US).',
     ],
-    ['2.', 'Within a record, fileds are separated by US (0x1F).'],
-    ['3.', 'Fields may contain any byte sequence except RS and US.'],
+    ['3.', 'Each row is separated by a Record Separator (RS).'],
+    ['4.', 'Every row must have the same number of columns as the header.'],
+    ['5.', 'Empty fields are written as two separators in a row.'],
     [
-        '4.',
-        'Fields may contain newlines, commas, tabs, and quotes without escaping.',
-    ],
-    ['5.', 'The first record MUST be a header record.'],
-    ['6.', 'All records MUST contain the same number of fields.'],
-    ['7.', 'Encoding MUST be UTF-8'],
-    [
-        '8.',
-        'A file containing only a header terminated by RS (0x1E) is a valid file with zero records.',
+        '6.',
+        'The Special separator characters (US) and (RS) cannot appear inside a field value.',
     ],
 ];
 
