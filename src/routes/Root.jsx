@@ -9,7 +9,7 @@ const Root = () => {
             <Header />
             <Box
                 sx={{
-                    pb: 7,
+                    pb: '100px',
                 }}
             >
                 <Outlet />
