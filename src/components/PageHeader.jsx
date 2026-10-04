@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from '@mui/material';
 import { HeroBackground } from './HeroBackground';
 
-const PageHeader = ({ eyebrow, title, intro }) => {
+const PageHeader = ({ eyebrow, title, intro, children }) => {
     return (
         <Box
             sx={{
@@ -40,6 +40,7 @@ const PageHeader = ({ eyebrow, title, intro }) => {
                 >
                     {intro}
                 </Typography>
+                {children}
             </Container>
         </Box>
     );

@@ -15,8 +15,8 @@ import { useMemo, useState } from 'react';
 import { PageHeader } from '../../components/PageHeader';
 import { SectionHeading } from '../../components/SectionHeading';
 import { SepGlyph } from '../../components/SepGlyph';
+import { RS, US } from '../../constants/characters';
 import { MONO } from '../../constants/fonts';
-import { RS, US } from '../../constants/surrogates';
 
 const SAMPLE = `[
   { "id": 1, "name": "Alice", "bio": "Lives in New York, NY.\\nWrites, a lot." },
