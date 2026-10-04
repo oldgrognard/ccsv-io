@@ -1,12 +1,15 @@
+import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router';
+import { Providers } from './components/Providers.jsx';
 import { Router } from './routes/Router';
 
 const container = document.getElementById('root');
-const root  = createRoot(container);
+const root = createRoot(container);
 
 root.render(
-    <BrowserRouter>
-        <Router />
-    </BrowserRouter>
-)
+    <React.StrictMode>
+        <Providers>
+            <Router />
+        </Providers>
+    </React.StrictMode>,
+);

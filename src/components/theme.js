@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import { MONO, SANS, INTER } from '../constants/fonts.js';
+import { INTER, MONO, SANS } from '../constants/fonts.js';
 
 const theme = createTheme({
     colorSchemes: {
@@ -53,7 +53,12 @@ const theme = createTheme({
         h5: { fontFamily: SANS, fontWeight: 600 },
         h6: { fontFamily: SANS, fontWeight: 500 },
         body1: { fontFamily: INTER, fontWeight: 400, lineHeight: 1.7 },
-        body2: { fontFamily: INTER, fontWeight: 400, lineHeight: 1.6 },
+        body2: {
+            fontFamily: INTER,
+            fontSize: '1rem',
+            fontWeight: 400,
+            lineHeight: 1.6,
+        },
         caption: {
             fontFamily: MONO,
             fontSize: '0.72rem',
@@ -93,5 +98,6 @@ const theme = createTheme({
         },
     },
 });
+console.info('theme', theme);
 
 export { theme };
