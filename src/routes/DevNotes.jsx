@@ -79,6 +79,7 @@ const DevNotes = () => {
                     when, and only when, they appear in all capitals, as shown
                     here.
                 </Typography>
+                <div id='rules' />
             </PageHeader>
 
             <Container maxWidth='lg' sx={{ pb: { xs: 8, md: 14 } }}>
