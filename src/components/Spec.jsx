@@ -1,11 +1,13 @@
-import { Box, Button, Container, Typography } from '@mui/material';
-import { HeroBackground } from './HeroBackground.jsx';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import { Box, Button, Container, Typography } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useNavigate } from 'react-router';
+import { HeroBackground } from './HeroBackground.jsx';
 import { SpecPreview } from './SpecPreview.jsx';
 
 const Spec = () => {
     const dark = useMediaQuery('(prefers-color-scheme: dark)');
+    const navigate = useNavigate();
     return (
         <Box
             id='spec'
@@ -81,6 +83,13 @@ const Spec = () => {
                             minWidth: '240px',
                         }}
                         endIcon={<ArrowForwardRoundedIcon />}
+                        onClick={() =>
+                            navigate({
+                                pathname: '/dev-notes',
+                                hash: '#rules',
+                                preventScrollReset: false,
+                            })
+                        }
                     >
                         Read the Rules
                     </Button>
