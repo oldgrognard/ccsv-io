@@ -63,7 +63,7 @@ const Spec = () => {
 
                 <Box
                     sx={{
-                        display: 'fles',
+                        display: 'flex',
                         flexDirection: { xs: 'column', sm: 'row' },
                         gap: 2,
                         justifyContent: 'center',
