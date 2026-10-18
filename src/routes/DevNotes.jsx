@@ -2,22 +2,12 @@ import { Box, Container, Grid, Link, Typography } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { PageHeader } from '../components/PageHeader';
 import { SectionHeading } from '../components/SectionHeading';
+import { SpecPreview } from '../components/SpecPreview';
 import { MONO } from '../constants/fonts';
+import { specPreviewData as RULES } from '../data/specPreviewData';
 
 const DevNotes = () => {
     const dark = useMediaQuery('(prefers-color-scheme: dark)');
-
-    const RULES = [
-        'The file MUST use UTF-8 encoding. Since US-ASCII is a subset of UTF-8, programs may create CCSV files with that encoding. A consuming program may not be able to interpret all characters if it only works with US-ASCII and SHOULD work with UTF-8 if the source is unknown.',
-        'The file MUST NOT begin with a Byte Order Mark (U+FEFF).',
-        'A CCSV MUST begin with a header. The header consists of the names of the columns separated with US (U+001F) entities.',
-        'A Unist Separator US (U+001F) is used between each field in a record. Note that carriage returns and line feeds are not part of the delimiter and are valid characters in the body of a field.',
-        'A Record Separator RS (U+001E) is used between each record in the file including the header.',
-        'A Record Separator RS (U+001E) MAY appear as the last entry of the last record but is NOT RECOMMENDED',
-        'The header and each record, if any, MUST contain the same number of US (U+001F) entities. Consequently, the header and every record will have the same number of fields.',
-        'Empty fields are represented by consecutive delimiters.',
-        'The US (U+001F) entity and the RS (U+001E) entity MUST NOT appear in the body of a field.',
-    ];
 
     const CONSIDERATIONS = [
         {
@@ -89,53 +79,7 @@ const DevNotes = () => {
                             eyebrow='Normative'
                             title={`The ${RULES.length} Rules`}
                         />
-                        <Box
-                            sx={{
-                                border: '1px solid',
-                                borderColor: 'divider',
-                                borderRadius: 1,
-                                bgcolor: 'background.paper',
-                                p: { xs: 3, md: 4 },
-                            }}
-                        >
-                            {RULES.map((rule, index) => (
-                                <Box
-                                    key={index}
-                                    sx={{
-                                        display: 'flex',
-                                        gap: 2,
-                                        py: 1.5,
-                                        borderBottom: '1px solid',
-                                        borderColor: 'divider',
-                                        '&:last-child': {
-                                            borderBottom: 'none',
-                                            pb: 0,
-                                        },
-                                    }}
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontFamily: MONO,
-                                            fontSize: '0.75rem',
-                                            color: 'primary.main',
-                                            minWidth: 28,
-                                            pt: 0.3,
-                                        }}
-                                    >
-                                        {`${index + 1}.`}
-                                    </Typography>
-                                    <Typography
-                                        variant='body2'
-                                        color='text.secondary'
-                                        sx={{
-                                            fontSize: '0.9rem',
-                                        }}
-                                    >
-                                        {rule}
-                                    </Typography>
-                                </Box>
-                            ))}
-                        </Box>
+                        <SpecPreview />
                     </Box>
 
                     <Box>

@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
-import { specPreviewData } from '../data/specPreviewData.js';
 import { MONO } from '../constants/fonts.js';
+import { specPreviewData } from '../data/specPreviewData.js';
 
 const SpecPreview = () => {
     return (
@@ -25,9 +25,9 @@ const SpecPreview = () => {
             >
                 Spec preview: normative rules
             </Typography>
-            {specPreviewData.map(([num, rule]) => (
+            {specPreviewData.map((rule, index) => (
                 <Box
-                    key={num}
+                    key={index}
                     sx={{
                         display: 'flex',
                         gap: 2,
@@ -49,7 +49,7 @@ const SpecPreview = () => {
                             pt: 0.3,
                         }}
                     >
-                        {num}
+                        {`${index + 1}.`}
                     </Typography>
                     <Typography
                         variant='body2'

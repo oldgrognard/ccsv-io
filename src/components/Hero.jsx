@@ -1,8 +1,8 @@
 import { Box, Button, Chip, Container, Typography } from '@mui/material';
-import { MONO } from '../constants/fonts.js';
-import { HeroBackground } from './HeroBackground';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { MONO } from '../constants/fonts.js';
+import { HeroBackground } from './HeroBackground';
 
 const Hero = () => {
     const theme = useTheme();
@@ -46,7 +46,7 @@ const Hero = () => {
                             }}
                         />
                         <Typography variant='caption' color='text.secondary'>
-                            ASCII-native delimiter format
+                            CCSV File Format
                         </Typography>
                     </Box>
 
