@@ -58,7 +58,7 @@ const Header = () => {
                                 letterSpacing: '-0.02em',
                             }}
                         >
-                            .ccsv
+                            CCSV
                         </Box>
                         <Typography
                             variant='caption'

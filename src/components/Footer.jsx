@@ -35,14 +35,17 @@ const Footer = () => {
                                 color: 'primary.main',
                             }}
                         >
-                            .ccsv
+                            CCSV
                         </Typography>
                         <Typography variant='caption' color='text.secondary'>
-                            ASCII-native rectangular data format
+                            UTF-8 encoded rectangular data format
                         </Typography>
                     </Box>
                     <Box sx={{ display: 'flex', gap: 3 }}>
-                        {['RS = 0x1E', 'US = 0x1F', 'UTF-8'].map((tag) => (
+                        {[
+                            'US = U+001F - Field Separator',
+                            'RS = U+001E - Record Separator',
+                        ].map((tag) => (
                             <Typography
                                 key={tag}
                                 variant='caption'
