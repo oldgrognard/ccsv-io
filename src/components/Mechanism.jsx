@@ -1,8 +1,8 @@
+import { Box, Container, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { Box, Container, Grid, Typography } from '@mui/material';
-import { AsciiTag } from './AsciiTag';
 import { MONO } from '../constants/fonts.js';
+import { AsciiTag } from './AsciiTag';
 
 const Mechanism = () => {
     const theme = useTheme();
@@ -26,19 +26,20 @@ const Mechanism = () => {
                             mb: 2,
                         }}
                     >
-                        Two characters. Zero ambiguity.
+                        Two delimiters.
                     </Typography>
                     <Typography
                         variant='body1'
                         color='text.secondary'
                         sx={{ maxWidth: 560 }}
                     >
-                        The ASCII standard defines control characters explicitly
-                        as data delimiters. .ccsv uses exactly two of them and
-                        nothing more.
+                        CCSV uses two ASCII control characters:{' '}
+                        <strong>US</strong> &mdash; Field delimiter ( separates
+                        fields within a record ), and <strong>RS</strong>{' '}
+                        &mdash; Record separator ( separates records within a
+                        file).
                     </Typography>
                 </Box>
-
                 <Grid container spacing={4} sx={{ mb: 8 }}>
                     <Grid size={{ xs: 12, md: 6 }}>
                         <Box
@@ -81,16 +82,20 @@ const Mechanism = () => {
                                         color='primary'
                                         sx={{ display: 'block', mb: 1.5 }}
                                     >
-                                        Field / column delimiter
+                                        Field delimiter
                                     </Typography>
                                     <Typography
                                         variant='body2'
                                         color='text.secondary'
                                     >
-                                        Separates individual values within a
-                                        single record. Equivalent to the comma
-                                        in CSV or the tab in TSV, but impossible
-                                        to confuse with data.
+                                        Separates individual fields within a
+                                        record. Like the comma in CSV or the tab
+                                        in TSV, US defines the boundary between
+                                        fields. Because US is a non-printing
+                                        control character, printable characters
+                                        such as commas, tabs, and quotation
+                                        marks do not have delimiter significance
+                                        in CCSV.
                                     </Typography>
                                 </Box>
                             </Box>
@@ -186,17 +191,17 @@ const Mechanism = () => {
                                         color='secondary'
                                         sx={{ display: 'block', mb: 1.5 }}
                                     >
-                                        Row delimiter
+                                        Record delimiter
                                     </Typography>
                                     <Typography
                                         variant='body2'
                                         color='text.secondary'
                                     >
-                                        Separates one record (row) from the
-                                        next. Equivalent to a newline in CSV.
-                                        Unlike a newline, it never appears in
-                                        ordinary text fields, code, or
-                                        multi-line values.
+                                        Separates one record from the next. CCSV
+                                        does not use CR or LF as record
+                                        delimiters, so those charcters may occur
+                                        within field values, including
+                                        multi-line text.
                                     </Typography>
                                 </Box>
                             </Box>
@@ -265,11 +270,153 @@ const Mechanism = () => {
                         </Box>
                     </Grid>
                 </Grid>
-
+                <Typography
+                    variant='h2'
+                    sx={{
+                        fontSize: { xs: '1.9rem', md: '2.8rem' },
+                        mb: 2,
+                    }}
+                >
+                    A simple tabular structure
+                </Typography>
+                <Typography variant='body1'>
+                    A CCSV file consists of a header followed by zero or more
+                    records.
+                </Typography>
+                <Typography variant='body1' sx={{ mb: 2 }}>
+                    The header defines the fields in each record. The header and
+                    every records MUST contain the same number of fields.
+                </Typography>
+                <Typography variant='body1'>
+                    For example, a three-field dataset might contain:
+                </Typography>
+                <Typography variant='body1'>
+                    <strong>Header: </strong>
+                    <code>name · age · location</code>
+                </Typography>
+                <Typography>
+                    <strong>Record:</strong> Alice · 42 · New York, NY
+                </Typography>
+                <Typography>
+                    <strong>Record:</strong> Bob · 31 · São Paulo, Br
+                </Typography>
+                <Box
+                    sx={{
+                        p: 2,
+                        bgcolor: dark ? 'rgba(0,0,0,0.4)' : 'rgba(0,0,0,0.03)',
+                        borderRadius: 1,
+                        fontFamily: MONO,
+                        fontSize: '0.8rem',
+                        color: 'text.secondary',
+                        letterSpacing: '0.02em',
+                    }}
+                >
+                    <div>
+                        <span
+                            style={{
+                                color: dark ? '#e8edf5' : '#0a1628',
+                            }}
+                        >
+                            name
+                            <span
+                                style={{
+                                    color: dark ? '#00e5ff' : '#0066cc',
+                                }}
+                            >
+                                {' \\x1F '}
+                            </span>
+                            age{' '}
+                            <span
+                                style={{
+                                    color: dark ? '#00e5ff' : '#0066cc',
+                                }}
+                            >
+                                {' \\x1F '}
+                            </span>
+                            city
+                        </span>
+                        <span
+                            style={{
+                                color: dark ? '#c49fff' : '#6200ea',
+                            }}
+                        >
+                            {' \\x1E '}
+                        </span>
+                    </div>
+                    <div>
+                        <span
+                            style={{
+                                color: dark ? '#e8edf5' : '#0a1628',
+                            }}
+                        >
+                            Alice{' '}
+                            <span
+                                style={{
+                                    color: dark ? '#00e5ff' : '#0066cc',
+                                }}
+                            >
+                                {' \\x1F '}
+                            </span>
+                            42{' '}
+                            <span
+                                style={{
+                                    color: dark ? '#00e5ff' : '#0066cc',
+                                }}
+                            >
+                                {' \\x1F '}
+                            </span>
+                            New York, NY
+                        </span>
+                        <span
+                            style={{
+                                color: dark ? '#c49fff' : '#6200ea',
+                            }}
+                        >
+                            {' \\x1E '}
+                        </span>
+                    </div>
+                    <div>
+                        <span
+                            style={{
+                                color: dark ? '#e8edf5' : '#0a1628',
+                            }}
+                        >
+                            Bob{' '}
+                            <span
+                                style={{
+                                    color: dark ? '#00e5ff' : '#0066cc',
+                                }}
+                            >
+                                {' \\x1F '}
+                            </span>
+                            31{' '}
+                            <span
+                                style={{
+                                    color: dark ? '#00e5ff' : '#0066cc',
+                                }}
+                            >
+                                {' \\x1F '}
+                            </span>
+                            São Paulo, BR
+                        </span>
+                        <span
+                            style={{
+                                color: dark ? '#c49fff' : '#6200ea',
+                            }}
+                        >
+                            {' \\x1E '}
+                        </span>
+                    </div>
+                </Box>{' '}
+                <Typography variant='body1'>
+                    In the actual CCSV file, the fields are separated by US
+                    (U+001F) and the records by RS (U+001E).
+                </Typography>
                 {/* Parser pseudocode */}
                 <Box
                     sx={{
                         p: { xs: 3, md: 5 },
+                        mt: { xs: 3, md: 5 },
                         border: '1px solid',
                         borderColor: 'divider',
                         borderRadius: 1,
@@ -281,7 +428,7 @@ const Mechanism = () => {
                         color='text.secondary'
                         sx={{ mb: 3, display: 'block' }}
                     >
-                        Complete parser &mdash; pseudocode
+                        Parsing CCSV
                     </Typography>
                     <Box
                         sx={{

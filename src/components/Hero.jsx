@@ -1,4 +1,15 @@
-import { Box, Button, Chip, Container, Typography } from '@mui/material';
+import {
+    Avatar,
+    Box,
+    Button,
+    Chip,
+    Container,
+    List,
+    ListItem,
+    ListItemAvatar,
+    ListItemText,
+    Typography,
+} from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { MONO } from '../constants/fonts.js';
@@ -29,7 +40,7 @@ const Hero = () => {
                         }}
                     >
                         <Chip
-                            label='RFC Proposal'
+                            label='IETF Internet-Draft'
                             size='small'
                             sx={{
                                 fontFamily: MONO,
@@ -46,7 +57,7 @@ const Hero = () => {
                             }}
                         />
                         <Typography variant='caption' color='text.secondary'>
-                            CCSV File Format
+                            draft-rankin-ccsv-03
                         </Typography>
                     </Box>
 
@@ -59,8 +70,49 @@ const Hero = () => {
                             '& span': { color: 'primary.main' },
                         }}
                     >
-                        The delimiter that <span>cannot</span> collide with your
-                        data.
+                        <span>Control characters</span> as delimiters
+                    </Typography>
+                    <Typography>
+                        CCSV uses two ASCII control characters as delimiters:
+                    </Typography>
+
+                    <List>
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar sx={{ bgcolor: 'primary.main' }}>
+                                    US
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText
+                                primary='Unit Separator (US, U+001F)'
+                                secondary='separates fields.'
+                            />
+                        </ListItem>
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar sx={{ bgcolor: 'secondary.main' }}>
+                                    RS
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText
+                                primary='Record Separator (RS, U+001E)'
+                                secondary='separates records.'
+                            />
+                        </ListItem>
+                    </List>
+
+                    <Typography
+                        variant='body1'
+                        color='text.secondary'
+                        sx={{ fontSize: '1.1rem', maxWidth: 530, mb: 4 }}
+                    >
+                        A{' '}
+                        <strong style={{ color: dark ? '#e8edf5' : '#0a1628' }}>
+                            CCSV
+                        </strong>{' '}
+                        file is encoded using UTF-8 and begins with a header. US
+                        and RS are reserved by the format and MUST NOT occur
+                        within field contents.
                     </Typography>
 
                     <Typography
@@ -68,14 +120,9 @@ const Hero = () => {
                         color='text.secondary'
                         sx={{ fontSize: '1.1rem', maxWidth: 530, mb: 4 }}
                     >
-                        <strong style={{ color: dark ? '#e8edf5' : '#0a1628' }}>
-                            .ccsv
-                        </strong>{' '}
-                        uses ASCII control characters, the Unit Separator (US)
-                        and Record Separator (RS), as delimiters. These
-                        characters were designed in 1963 specifically to
-                        separate data. They have never appeared in human text.
-                        No quoting. No escaping. No ambiguity.
+                        Unlike formats that use printable characters as
+                        delimiters, CCSV does not define a quoting mechanism for
+                        ordinary field values.
                     </Typography>
 
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
@@ -111,7 +158,7 @@ const Hero = () => {
                                 },
                             }}
                         >
-                            See the comparison
+                            Compare formats
                         </Button>
                     </Box>
                 </Box>
