@@ -199,8 +199,8 @@ const Mechanism = () => {
                                     >
                                         Separates one record from the next. CCSV
                                         does not use CR or LF as record
-                                        delimiters, so those charcters may occur
-                                        within field values, including
+                                        delimiters, so those characters may
+                                        occur within field values, including
                                         multi-line text.
                                     </Typography>
                                 </Box>
@@ -285,7 +285,7 @@ const Mechanism = () => {
                 </Typography>
                 <Typography variant='body1' sx={{ mb: 2 }}>
                     The header defines the fields in each record. The header and
-                    every records MUST contain the same number of fields.
+                    every record MUST contain the same number of fields.
                 </Typography>
                 <Typography variant='body1'>
                     For example, a three-field dataset might contain:
@@ -298,7 +298,7 @@ const Mechanism = () => {
                     <strong>Record:</strong> Alice · 42 · New York, NY
                 </Typography>
                 <Typography>
-                    <strong>Record:</strong> Bob · 31 · São Paulo, Br
+                    <strong>Record:</strong> Bob · 31 · São Paulo, BR
                 </Typography>
                 <Box
                     sx={{
