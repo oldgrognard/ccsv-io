@@ -410,77 +410,9 @@ const Mechanism = () => {
                 </Box>{' '}
                 <Typography variant='body1'>
                     In the actual CCSV file, the fields are separated by US
-                    (U+001F) and the records by RS (U+001E).
+                    (U+001F) and the records by RS (U+001E). They are shown here
+                    as \x1F and \x1E for clarity.
                 </Typography>
-                {/* Parser pseudocode */}
-                <Box
-                    sx={{
-                        p: { xs: 3, md: 5 },
-                        mt: { xs: 3, md: 5 },
-                        border: '1px solid',
-                        borderColor: 'divider',
-                        borderRadius: 1,
-                        bgcolor: 'background.paper',
-                    }}
-                >
-                    <Typography
-                        variant='overline'
-                        color='text.secondary'
-                        sx={{ mb: 3, display: 'block' }}
-                    >
-                        Parsing CCSV
-                    </Typography>
-                    <Box
-                        sx={{
-                            fontFamily: MONO,
-                            fontSize: { xs: '0.78rem', md: '0.88rem' },
-                            lineHeight: 2,
-                            color: 'text.secondary',
-                            '& .kw': {
-                                color: dark ? '#00e5ff' : '#0066cc',
-                            },
-                            '& .fn': {
-                                color: dark ? '#c49fff' : '#6200ea',
-                            },
-                            '& .cm': {
-                                color: dark ? '#506479' : '#889911',
-                            },
-                            '& .str': {
-                                color: dark ? '#b3e5fc' : '#1565c0',
-                            },
-                        }}
-                    >
-                        <div>
-                            <span className='kw'>function</span>{' '}
-                            <span className='fn'>parseCCSV</span>(bytes):
-                        </div>
-                        <div>
-                            &nbsp;&nbsp;records = bytes.
-                            <span className='fn'>split</span>(
-                            <span className='str'>RS</span>){' '}
-                            <span className='cm'>
-                                {'// 0x1E - never appears in data'}
-                            </span>
-                        </div>
-                        <div>
-                            &nbsp;&nbsp;<span className='kw'>return</span>{' '}
-                            records.<span className='fn'>map</span>(r {'=>'} r.
-                            <span className='fn'>split</span>(
-                            <span className='str'>US</span>)){' '}
-                            <span className='cm'>
-                                {'// 0x1F - split each row into fields'}
-                            </span>
-                        </div>
-                        <div>&nbsp;</div>
-                        <div>
-                            <span className='cm'>
-                                {
-                                    "// That's the entire parser. No state machine. No quoting rules."
-                                }
-                            </span>
-                        </div>
-                    </Box>
-                </Box>
             </Container>
         </Box>
     );

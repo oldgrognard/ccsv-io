@@ -1,107 +1,76 @@
 const comparisonData = [
     {
-        attribute: 'Delimiter collision',
+        attribute: 'Field delimiter',
         ccsv: {
-            value: 'NONE: control chars never appear in text data',
-            score: 5,
+            value: 'US (U+001F)',
         },
         csv: {
-            value: 'FREQUENT: commas appear in prose, numbers, addresses',
-            score: 2,
+            value: 'Comma',
         },
         tsv: {
-            value: 'MODERATE: tabs appear in source code, logs, notes',
-            score: 3,
+            value: 'Tab',
         },
     },
     {
-        attribute: 'Quoting / escaping required',
-        ccsv: { value: 'NEVER: no quoting rules needed by design', score: 5 },
+        attribute: 'Record delimiter',
+        ccsv: { value: 'RS (U+001E)' },
         csv: {
-            value: 'Always when commas, newlines, or quotes in values',
-            score: 2,
+            value: 'Varies by format and implementation',
         },
-        tsv: { value: 'When tabs or newlines appear in values', score: 3 },
+        tsv: { value: 'Varies by format and implementation' },
     },
     {
-        attribute: 'Multi-line cell values',
-        ccsv: { value: 'NATIVE: newlines are just data characters', score: 5 },
+        attribute: 'Required header',
+        ccsv: { value: 'Yes' },
         csv: {
-            value: 'Requires quoting; parsers often disagree on behavior',
-            score: 2,
+            value: 'No',
         },
-        tsv: { value: 'Requires escaping; poorly standardized', score: 2 },
+        tsv: { value: 'Not inherently' },
     },
     {
-        attribute: 'Parser complexity',
+        attribute: 'Required encoding',
         ccsv: {
-            value: 'TRIVIAL: split on RS, then US. No state machine needed',
-            score: 5,
+            value: 'UTF-8',
         },
         csv: {
-            value: 'COMPLEX: quoting, escaping, and edge cases abound',
-            score: 1,
+            value: 'Not defined by the original format specification',
         },
         tsv: {
-            value: 'MODERATE: simpler than CSV but quoting still needed',
-            score: 3,
+            value: 'Not defined by a single format specification',
         },
     },
     {
-        attribute: 'Human readability',
+        attribute: 'Quoting syntax',
         ccsv: {
-            value: 'LOW; control chars invisible in most editors',
-            score: 2,
+            value: 'None',
         },
         csv: {
-            value: 'HIGH: immediately readable in any text editor',
-            score: 5,
+            value: 'Yes',
         },
-        tsv: { value: 'HIGH: tab alignment is visible and clear', score: 4 },
+        tsv: { value: 'Implementation dependent' },
     },
     {
-        attribute: 'Spec ambiguity',
+        attribute: 'CF/LF in field values',
         ccsv: {
-            value: 'NONE: delimiter is unambiguous by ASCII definition',
-            score: 5,
+            value: 'Permitted',
         },
         csv: {
-            value: 'HIGH: RFC 4180 is advisory; dialects proliferate',
-            score: 1,
+            value: 'Requires handling according to the CSV rules',
         },
         tsv: {
-            value: 'MODERATE: no formal RFC; de-facto standard varies',
-            score: 2,
+            value: 'Implementation dependent',
         },
     },
     {
-        attribute: 'Streaming / chunked parse',
+        attribute: 'Printable delimiter characters',
         ccsv: {
-            value: 'TRIVIAL: RS and US are unambiguous boundary markers',
-            score: 5,
+            value: 'Have no delimiter meaning',
         },
         csv: {
-            value: 'HARD: must buffer quoted fields across chunks',
-            score: 2,
+            value: 'Comma has delimiter meaning',
         },
         tsv: {
-            value: 'MODERATE: simpler than CSV but still stateful',
-            score: 3,
-        },
-    },
-    {
-        attribute: 'Tooling & ecosystem',
-        ccsv: {
-            value: 'EMERGING: growing adoption, few dedicated tools',
-            score: 2,
-        },
-        csv: {
-            value: 'UBIQUITOUS: Excel, pandas, every ETL pipeline',
-            score: 5,
-        },
-        tsv: {
-            value: 'GOOD: supported in many databases and tools',
-            score: 4,
+            value: 'Tab has delimiter meaning',
         },
     },
 ];

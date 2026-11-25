@@ -1,7 +1,8 @@
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 import {
     Box,
     Container,
-    Divider,
     Grid,
     Paper,
     Table,
@@ -12,13 +13,10 @@ import {
     TableRow,
     Typography,
 } from '@mui/material';
-import { Score } from './Score.jsx';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { callouts } from '../constants/callouts.js';
 import { MONO } from '../constants/fonts.js';
 import { comparisonData } from '../data/comparisonData.js';
-import { callouts } from '../constants/callouts.js';
-import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
-import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 
 const Comparison = () => {
     const dark = useMediaQuery('(prefers-color-scheme: dark)');
@@ -65,9 +63,10 @@ const Comparison = () => {
                         color='text.secondary'
                         sx={{ maxWidth: 580 }}
                     >
-                        Scored across eight attributes. Dots indicate relative
-                        strength &mdash; more is better. Scores reflect design
-                        properties, not tooling maturity.
+                        CCSV is intentionally limited to a simple rectangular
+                        data model. Its use of US and RS as delimiters
+                        distinguishes it from formats that use printable
+                        characters.
                     </Typography>
                 </Box>
 
@@ -163,9 +162,6 @@ const Comparison = () => {
                                         </Typography>
                                     </TableCell>
                                     <TableCell>
-                                        <Box sx={{ mb: 1 }}>
-                                            <Score value={row.ccsv.score} />
-                                        </Box>
                                         <Typography
                                             variant='body2'
                                             color='text.secondary'
@@ -175,9 +171,6 @@ const Comparison = () => {
                                         </Typography>
                                     </TableCell>
                                     <TableCell>
-                                        <Box sx={{ mb: 1 }}>
-                                            <Score value={row.csv.score} />
-                                        </Box>
                                         <Typography
                                             variant='body2'
                                             color='text.secondary'
@@ -187,9 +180,6 @@ const Comparison = () => {
                                         </Typography>
                                     </TableCell>
                                     <TableCell>
-                                        <Box sx={{ mb: 1 }}>
-                                            <Score value={row.tsv.score} />
-                                        </Box>
                                         <Typography
                                             variant='body2'
                                             color='text.secondary'
