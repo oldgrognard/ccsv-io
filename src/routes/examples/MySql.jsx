@@ -10,10 +10,10 @@ const MySql = () => {
         <>
             <PageHeader
                 eyebrow='examples - mysql'
-                title='Reading and writing .ccsv with MySQL'
+                title='Reading and writing CCSV with MySQL'
                 intro={
                     <>
-                        MySQL can emit and ingest .ccsv directly. Because the
+                        MySQL can emit and ingest CCSV directly. Because the
                         delimiters are single bytes,{' '}
                         <Box
                             component='code'

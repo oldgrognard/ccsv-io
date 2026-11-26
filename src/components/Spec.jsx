@@ -1,5 +1,5 @@
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
-import { Box, Button, Container, Typography } from '@mui/material';
+import { Box, Button, Container, Link, Typography } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useNavigate } from 'react-router';
 import { HeroBackground } from './HeroBackground.jsx';
@@ -44,7 +44,8 @@ const Spec = () => {
                         lineHeight: 1.15,
                     }}
                 >
-                    Ready to implement .ccsv?
+                    CCSV is currently defined by the IETF Internet-Draft
+                    draft-rankin-ccsv-03.
                 </Typography>
                 <Typography
                     variant='body1'
@@ -56,11 +57,31 @@ const Spec = () => {
                         mx: 'auto',
                     }}
                 >
-                    The rules for producing and consuming a valid .ccsv file are
-                    brief, precise, and unambiguous. The fit on one page. Read
-                    them.
+                    The draft specifies the file encoding, delimiters, record
+                    structure, field rules, security considerations, and
+                    proposed{' '}
+                    <Typography
+                        component='span'
+                        variant='overline'
+                        color='primary'
+                    >
+                        text/ccsv
+                    </Typography>{' '}
+                    media type.
                 </Typography>
-
+                <Typography
+                    variant='body1'
+                    color='text.secondary'
+                    sx={{
+                        mb: 5,
+                        fontSize: '1.05rem',
+                        maxWidth: 520,
+                        mx: 'auto',
+                    }}
+                >
+                    The Internet-Draft is the authoritative technical
+                    specification for CCSV.
+                </Typography>
                 <Box
                     sx={{
                         display: 'flex',
@@ -71,6 +92,7 @@ const Spec = () => {
                 >
                     <Button
                         variant='contained'
+                        component={Link}
                         size='large'
                         color='primary'
                         sx={{
@@ -83,13 +105,8 @@ const Spec = () => {
                             minWidth: '240px',
                         }}
                         endIcon={<ArrowForwardRoundedIcon />}
-                        onClick={() =>
-                            navigate({
-                                pathname: '/dev-notes',
-                                hash: '#rules',
-                                preventScrollReset: false,
-                            })
-                        }
+                        target='_blank'
+                        href='https://datatracker.ietf.org/doc/html/draft-rankin-ccsv-03'
                     >
                         Read the Rules
                     </Button>
