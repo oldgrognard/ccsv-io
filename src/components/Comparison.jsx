@@ -348,7 +348,7 @@ const Comparison = () => {
                                 tooling for CSV and TSV.
                             </Typography>
                             <Typography
-                                variant='bode2'
+                                variant='body'
                                 color='text.secondary'
                                 sx={{ fontSize: '0.82rem' }}
                             >
@@ -357,7 +357,7 @@ const Comparison = () => {
                                 provides CCSV support.
                             </Typography>
                             <Typography
-                                variant='bode2'
+                                variant='body2'
                                 color='text.secondary'
                                 sx={{ fontSize: '0.82rem' }}
                             >
