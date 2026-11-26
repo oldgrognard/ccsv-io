@@ -4,6 +4,8 @@ import {
     Box,
     Container,
     Grid,
+    List,
+    ListItem,
     Paper,
     Table,
     TableBody,
@@ -226,7 +228,7 @@ const Comparison = () => {
                             >
                                 US and RS are reserved as delimiters, while
                                 other characters including commas, tabs,
-                                quotation marks, CR, and LF,may occur in field
+                                quotation marks, CR, and LF, may occur in field
                                 values.
                             </Typography>
                             <Typography
@@ -299,13 +301,17 @@ const Comparison = () => {
                                 sx={{ fontSize: '0.82rem', mb: 1 }}
                             >
                                 CCSV defines two delimiters:
-                                <ul>
-                                    <li>US (U+001F) separates fields</li>
-                                    <li>RS (U+001E) separates records</li>
-                                </ul>
                             </Typography>
+                            <List dense={true} sx={{ mb: 1 }}>
+                                <ListItem>
+                                    US (U+001F) separates fields
+                                </ListItem>
+                                <ListItem>
+                                    RS (U+001E) separates records
+                                </ListItem>
+                            </List>
                             <Typography
-                                variant='bode2'
+                                variant='body2'
                                 color='text.secondary'
                                 sx={{ fontSize: '0.82rem' }}
                             >

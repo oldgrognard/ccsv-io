@@ -1,13 +1,11 @@
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import { Box, Button, Container, Link, Typography } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { useNavigate } from 'react-router';
 import { HeroBackground } from './HeroBackground.jsx';
 import { SpecPreview } from './SpecPreview.jsx';
 
 const Spec = () => {
     const dark = useMediaQuery('(prefers-color-scheme: dark)');
-    const navigate = useNavigate();
     return (
         <Box
             id='spec'

@@ -50,7 +50,7 @@ const comparisonData = [
         tsv: { value: 'Implementation dependent' },
     },
     {
-        attribute: 'CF/LF in field values',
+        attribute: 'CR/LF in field values',
         ccsv: {
             value: 'Permitted',
         },

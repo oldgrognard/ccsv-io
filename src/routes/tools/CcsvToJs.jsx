@@ -24,14 +24,12 @@ const SAMPLE =
     ['2', 'Bob', 'Enjoys "quoted" strings; commas, too.'].join(US);
 
 const fromCcsv = (input, mode) => {
-    // Drop carriage returns from CRLF input so line endings don't leak into cell values.
-    const noCRLF = input.replace(/\r/g, '');
-    if (noCRLF.length === 0)
+    // Preserve CR because it is valid field content; RS, not line endings, separates records.
+    if (input.length === 0)
         return { ok: false, error: 'Nothing to parse yet.' };
 
-		// Drop trailing RS if present
-		const clean = noCRLF.endsWith(RS) ? noCRLF.slice(0, -RS.length) : noCRLF;
-		
+    const clean = input.endsWith(RS) ? input.slice(0, -RS.length) : input;
+
     // Split on RS, then US
     const records = clean.split(RS);
     if (records.at(-1) === '') records.pop();
