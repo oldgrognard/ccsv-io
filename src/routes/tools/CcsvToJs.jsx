@@ -15,6 +15,7 @@ import { SectionHeading } from '../../components/SectionHeading';
 import { SepGlyph } from '../../components/SepGlyph';
 import { RS, US } from '../../constants/characters';
 import { MONO } from '../../constants/fonts';
+import { fromCcsv } from './fromCcsv';
 
 const SAMPLE =
     ['id', 'name', 'bio'].join(US) +
@@ -22,30 +23,6 @@ const SAMPLE =
     ['1', 'Alice', 'Lives in New York, NY.\nWrites a lot.'].join(US) +
     RS +
     ['2', 'Bob', 'Enjoys "quoted" strings; commas, too.'].join(US);
-
-const fromCcsv = (input, mode) => {
-    // Preserve CR because it is valid field content; RS, not line endings, separates records.
-    if (input.length === 0)
-        return { ok: false, error: 'Nothing to parse yet.' };
-
-    const clean = input.endsWith(RS) ? input.slice(0, -RS.length) : input;
-
-    // Split on RS, then US
-    const records = clean.split(RS);
-    if (records.at(-1) === '') records.pop();
-    const table = records.map((r) => r.split(US));
-
-    if (mode === 'arrays') {
-        return { ok: true, value: table, json: JSON.stringify(table, null, 2) };
-    }
-
-    const [header, ...rows] = table;
-    if (!header) return { ok: false, error: 'No header reocrd found.' };
-    const objects = rows.map((cells) =>
-        Object.fromEntries(header.map((key, i) => [key, cells[i] ?? ''])),
-    );
-    return { ok: true, value: objects, json: JSON.stringify(objects, null, 2) };
-};
 
 const CcsvToJs = () => {
     const [input, setInput] = React.useState(SAMPLE);
@@ -67,7 +44,7 @@ const CcsvToJs = () => {
             <PageHeader
                 eyebrow='Utility - Decode'
                 title='.ccsv to JavaScript'
-                intro='Paste raw .cssv (control characters and all) and get back a JSON array. The parser is two splits: on RS for records, on US for fields. No state machine, no quoting rules. Runs entirely in your browser.'
+                intro='Paste raw .ccsv (control characters and all) and get back a JSON array. The parser splits on RS for records and US for fields, then validates the header and field counts. No quoting rules. Runs entirely in your browser.'
             />
 
             <Container maxWidth='lg' sx={{ pb: { xs: 8, md: 14 } }}>
@@ -245,10 +222,17 @@ const CcsvToJs = () => {
                         {`const US = "\\u001F"; // field separator
 const RS = "\\u001E"; // record separator
                         
-function toCssv(rows) {
-    const header = Object.keys(rows[0]);
-    const body = rows.map(r => header.map(k => String(r[k] ?? "")));
-    return [header, ...body].map(r => r.join(US)).join(RS);
+function parseCcsv(input) {
+    if (!input || input.startsWith("\\uFEFF")) throw new Error("Invalid header");
+    const records = input.split(RS);
+    if (records.at(-1) === "") records.pop(); // optional final RS
+    if (!records[0]) throw new Error("Empty header");
+    const table = records.map(record => record.split(US));
+    for (let i = 1; i < records.length; i++) {
+        if (!records[i] || table[i].length !== table[0].length)
+            throw new Error(\`Invalid record \${i + 1}\`);
+    }
+    return table;
 }`}
                     </Box>
                 </Box>
