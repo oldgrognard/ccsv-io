@@ -23,7 +23,7 @@ const SpecPreview = () => {
                     display: 'block',
                 }}
             >
-                Spec preview: normative rules
+                Core format rules
             </Typography>
             {specPreviewData.map((rule, index) => (
                 <Box
